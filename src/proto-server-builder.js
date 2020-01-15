@@ -7,7 +7,7 @@ module.exports = (serviceDefinitions = {}, server = new grpc.Server()) => {
     if(_.isEmpty(serviceDefinitions)) {
         throw new ReferenceError("Service definitions need to be defined");
     }
-    let pkgDefs = getPkgDefs();
+    let pkgDefs = getPkgDefs(serviceDefinitions);
     _.forEach(pkgDefs, (pkgDefObj) => {
         let {
             pkgDef,

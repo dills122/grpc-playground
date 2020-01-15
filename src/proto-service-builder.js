@@ -7,22 +7,22 @@ const {
 } = require("path");
 
 const schema = joi.object().keys({
-    protoPath: joi.string().min(1).pattern(/[.](proto\b)/g).required(),
+    protoPath: joi.string().min(1).pattern(/[.](proto\b)/).required(),
     namespace: joi.string().min(1).required(),
     serviceName: joi.string().min(1).required()
 });
 
-//Not needed anymore just leaving for reference
-const config = {
-    protoDefinitionPath: 'protos',
-    Services: {
-        FirstService: {
-            protoPath: '/path/to/proto',
-            namespace: 'namespace',
-            serviceName: 'ServiceName'
-        }
-    }
-};
+// //Not needed anymore just leaving for reference
+// const config = {
+//     protoDefinitionPath: 'protos',
+//     Services: {
+//         FirstService: {
+//             protoPath: '/path/to/proto',
+//             namespace: 'namespace',
+//             serviceName: 'ServiceName'
+//         }
+//     }
+// };
 
 //Load all of the protos into packages
 module.exports = (config = {}) => {
@@ -32,9 +32,8 @@ module.exports = (config = {}) => {
     }
 
     return _.map(protoServices, (serviceName) => {
-        let protoDefinition = config[serviceName];
+        let protoDefinition = config.Services[serviceName];
         joi.attempt(protoDefinition, schema);
-
         if (_.isEmpty(protoDefinition)) {
             throw new ReferenceError(`${serviceName} was supplied with an empty service defintion`);
         }
