@@ -12,6 +12,7 @@ const schema = joi.object().keys({
     serviceName: joi.string().min(1).required()
 });
 
+//Not needed anymore just leaving for reference
 const config = {
     protoDefinitionPath: 'protos',
     Services: {
@@ -24,9 +25,9 @@ const config = {
 };
 
 //Load all of the protos into packages
-module.exports = () => {
+module.exports = (config = {}) => {
     const protoServices = _.keys(config.Services);
-    if (protoServices.length === 0) {
+    if (protoServices.length === 0 || _.isEmpty(config)) {
         throw new ReferenceError("config did not have any proto's defined");
     }
 
