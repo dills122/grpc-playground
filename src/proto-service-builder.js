@@ -38,8 +38,7 @@ module.exports = (config = {}) => {
         if (_.isEmpty(protoDefinition)) {
             throw new ReferenceError(`${serviceName} was supplied with an empty service defintion`);
         }
-        const protoPath = join(__dirname, config.protoDefinitionPath, protoDefinition.protoPath);
-        const packageDefinition = protoLoader.loadSync(protoPath, {
+        const packageDefinition = protoLoader.loadSync(protoDefinition.protoPath, {
             keepCase: true,
             longs: String,
             enums: String,
