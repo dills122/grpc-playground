@@ -3,7 +3,7 @@ const getPkgDefs = require("./proto-service-builder");
 const grpc = require("grpc");
 const _ = require("lodash");
 
-module.exports = (server = new grpc.Server(), serviceDefinitions = {}) => {
+module.exports = (serviceDefinitions = {}, server = new grpc.Server()) => {
     if(_.isEmpty(serviceDefinitions)) {
         throw new ReferenceError("Service definitions need to be defined");
     }
