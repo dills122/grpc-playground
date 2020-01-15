@@ -3,19 +3,19 @@ const getPkgDefs = require("./proto-service-builder");
 const grpc = require("grpc");
 const _ = require("lodash");
 
-module.exports = (serviceDefinitions = {}, server = new grpc.Server()) => {
-    if(_.isEmpty(serviceDefinitions)) {
+module.exports = (config = {}, server = new grpc.Server()) => {
+    if(_.isEmpty(config)) {
         throw new ReferenceError("Service definitions need to be defined");
     }
-    let pkgDefs = getPkgDefs(serviceDefinitions);
+    let pkgDefs = getPkgDefs(config);
     _.forEach(pkgDefs, (pkgDefObj) => {
         let {
             pkgDef,
             serviceName,
-            namespace
+            namespace,
+            serviceDefinitions
         } = pkgDefObj;
-        let serviceDefinition = serviceDefinitions[serviceName];
-        server.addService(pkgDef[namespace][serviceName], serviceDefinition);
+        server.addService(pkgDef[namespace][serviceName], serviceDefinitions);
     });
     return server;
 };

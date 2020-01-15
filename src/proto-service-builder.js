@@ -9,7 +9,8 @@ const {
 const schema = joi.object().keys({
     protoPath: joi.string().min(1).pattern(/[.](proto\b)/).required(),
     namespace: joi.string().min(1).required(),
-    serviceName: joi.string().min(1).required()
+    serviceName: joi.string().min(1).required(),
+    serviceDefinitions: joi.object().required()
 });
 
 // //Not needed anymore just leaving for reference
