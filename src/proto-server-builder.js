@@ -15,7 +15,7 @@ module.exports = (config = {}, server = new grpc.Server()) => {
             namespace,
             serviceDefinitions
         } = pkgDefObj;
-        server.addService(pkgDef[namespace][serviceName], serviceDefinitions);
+        server.addService(pkgDef[serviceName].service, serviceDefinitions);
     });
     return server;
 };
