@@ -15,12 +15,12 @@ This allows for some cleaner and more organized code since all of your service d
 
 ```json
 {
-    protoDefinitionPath: 'protos',
-    Services: {
-        FirstService: {
-            protoPath: '/path/to/proto.proto',
-            namespace: 'namespace',
-            serviceName: 'ServiceName'
+    "protoDefinitionPath": "protos",
+    "Services": {
+        "FirstService": {
+            "protoPath": "/path/to/proto.proto",
+            "namespace": "namespace",
+            "serviceName": "ServiceName"
         }
     }
 }
