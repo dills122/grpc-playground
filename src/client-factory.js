@@ -2,7 +2,7 @@ const grpc = require("grpc");
 const protoLoader = require("@grpc/proto-loader");
 const _ = require("lodash");
 
-const server_address = "localhost:50051";
+const server_address = "localhost:50051"; //TODO update with arg
 
 module.exports = async (protoPath, serviceName, namespace = '') => {
     let proto;
