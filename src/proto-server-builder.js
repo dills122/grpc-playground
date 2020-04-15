@@ -1,5 +1,4 @@
 const getPkgDefs = require("./proto-service-builder");
-// const serviceDefinitions = require("./proto-service-definitions");
 const grpc = require("grpc");
 const _ = require("lodash");
 

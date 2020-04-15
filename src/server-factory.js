@@ -1,7 +1,7 @@
 const grpc = require("grpc");
 const serverBuilder = require("./proto-server-builder");
 
-const server_address = "0.0.0.0:50051";
+const server_address = "0.0.0.0:50051"; //TODO update as arg
 
 module.exports = async (serverDefinitions = {}) => {
     const server = serverBuilder(serverDefinitions);
